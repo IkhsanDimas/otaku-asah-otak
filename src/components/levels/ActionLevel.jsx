@@ -26,15 +26,15 @@ function ActionLevel({ level, onAnswer, isCorrect }) {
     const chars = equation.split('');
     
     return (
-      <div className="flex flex-wrap justify-center items-center gap-2 text-4xl font-bold">
+      <div className="flex flex-wrap justify-center items-center gap-1 sm:gap-2 text-2xl sm:text-4xl font-bold">
         {chars.map((char, index) => (
           <span
             key={index}
             onClick={() => handleAddLine(index)}
             className={`
-              px-2 py-1 rounded cursor-pointer transition-all
+              px-1 sm:px-2 py-1 rounded cursor-pointer transition-all
               ${char === '+' || char === '=' ? 'hover:bg-indigo-500/30 text-indigo-300' : ''}
-              ${char === ' ' ? 'w-2' : ''}
+              ${char === ' ' ? 'w-1 sm:w-2' : ''}
             `}
           >
             {char}
@@ -45,10 +45,10 @@ function ActionLevel({ level, onAnswer, isCorrect }) {
   };
 
   return (
-    <div className="flex flex-col items-center gap-6">
-      <p className="text-center text-white/60">{level.instruction}</p>
+    <div className="flex flex-col items-center gap-4 sm:gap-6">
+      <p className="text-center text-white/60 text-sm sm:text-base">{level.instruction}</p>
       
-      <div className="card p-8">
+      <div className="card p-4 sm:p-8 w-full">
         {renderEquation()}
       </div>
       

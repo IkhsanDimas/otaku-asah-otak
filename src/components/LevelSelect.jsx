@@ -65,7 +65,7 @@ function LevelSelect({ progress, onSelectLevel, onBack, onReset }) {
       </div>
 
       {/* Level Grid */}
-      <div className="grid grid-cols-4 gap-3 overflow-y-auto pb-20">
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 sm:gap-3 overflow-y-auto pb-24 sm:pb-20">
         {levels.map(level => {
           const isUnlocked = level.id <= progress.unlockedLevel;
           const isCompleted = progress.completedLevels[level.id];
@@ -83,8 +83,8 @@ function LevelSelect({ progress, onSelectLevel, onBack, onReset }) {
               `}
             >
               {/* Level Number */}
-              <span className="text-2xl font-bold mb-1">
-                {isUnlocked ? level.id : <FaLock className="text-lg" />}
+              <span className="text-xl sm:text-2xl font-bold mb-1">
+                {isUnlocked ? level.id : <FaLock className="text-base sm:text-lg" />}
               </span>
 
               {/* Difficulty Badge */}
@@ -102,19 +102,19 @@ function LevelSelect({ progress, onSelectLevel, onBack, onReset }) {
       </div>
 
       {/* Stats Footer */}
-      <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent p-4">
-        <div className="card p-3 flex justify-around text-center">
+      <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900 to-transparent p-3 sm:p-4 safe-area-bottom">
+        <div className="card p-2 sm:p-3 flex justify-around text-center max-w-md mx-auto">
           <div>
             <div className="flex items-center justify-center gap-1 text-yellow-400">
-              <FaStar />
-              <span className="font-bold">{progress.totalStars}</span>
+              <FaStar className="text-sm sm:text-base" />
+              <span className="font-bold text-sm sm:text-base">{progress.totalStars}</span>
             </div>
-            <p className="text-xs text-white/50">Total Bintang</p>
+            <p className="text-[10px] sm:text-xs text-white/50">Total Bintang</p>
           </div>
           <div className="w-px bg-white/20" />
           <div>
-            <span className="font-bold text-indigo-400">{progress.hintsUsed}</span>
-            <p className="text-xs text-white/50">Hint Dipakai</p>
+            <span className="font-bold text-sm sm:text-base text-indigo-400">{progress.hintsUsed}</span>
+            <p className="text-[10px] sm:text-xs text-white/50">Hint Dipakai</p>
           </div>
         </div>
       </div>

@@ -111,41 +111,41 @@ function GameScreen({ level, onComplete, onBack, onGameOver }) {
   return (
     <div className="flex-1 flex flex-col">
       {/* Header */}
-      <div className="flex items-center justify-between p-4 border-b border-white/10">
+      <div className="flex items-center justify-between p-3 sm:p-4 border-b border-white/10">
         <button onClick={onBack} className="btn-secondary p-2">
           <FaArrowLeft />
         </button>
         
         <div className="text-center">
-          <span className="text-sm text-white/60">Level</span>
-          <h2 className="text-xl font-bold">{level.id}</h2>
+          <span className="text-xs sm:text-sm text-white/60">Level</span>
+          <h2 className="text-lg sm:text-xl font-bold">{level.id}</h2>
         </div>
         
         <button 
           onClick={handleShowHint}
           disabled={showHint}
-          className={`btn-hint flex items-center gap-2 ${showHint ? 'opacity-50' : ''}`}
+          className={`btn-hint flex items-center gap-1 sm:gap-2 text-sm sm:text-base ${showHint ? 'opacity-50' : ''}`}
         >
-          <FaLightbulb /> Hint
+          <FaLightbulb /> <span className="hidden xs:inline">Hint</span><span className="xs:hidden">💡</span>
         </button>
       </div>
 
       {/* Game Content */}
-      <div className="flex-1 flex flex-col p-4 overflow-y-auto">
+      <div className="flex-1 flex flex-col p-3 sm:p-4 overflow-y-auto">
         {/* Illustration */}
         {level.illustration && (
-          <div className={`text-center mb-4 ${level.illustrationSize || 'text-4xl'}`}>
-            <div className="inline-block p-4 bg-white/5 rounded-2xl">
+          <div className={`text-center mb-3 sm:mb-4 ${level.illustrationSize || 'text-3xl sm:text-4xl'}`}>
+            <div className="inline-block p-3 sm:p-4 bg-white/5 rounded-xl sm:rounded-2xl max-w-full overflow-x-auto">
               {level.illustration.split('\n').map((line, i) => (
-                <div key={i}>{line}</div>
+                <div key={i} className="whitespace-nowrap">{line}</div>
               ))}
             </div>
           </div>
         )}
 
         {/* Question */}
-        <div className="card p-6 mb-6">
-          <p className="text-lg md:text-xl text-center leading-relaxed">
+        <div className="card p-4 sm:p-6 mb-4 sm:mb-6">
+          <p className="text-base sm:text-lg md:text-xl text-center leading-relaxed">
             {level.question}
           </p>
         </div>

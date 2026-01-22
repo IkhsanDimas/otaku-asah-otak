@@ -60,7 +60,7 @@ function TapLevel({ level, onAnswer, isCorrect }) {
         <button
           key={item.id}
           onClick={() => handleTap(item)}
-          className="text-2xl font-bold text-indigo-300 hover:text-indigo-100 transition-colors cursor-pointer underline"
+          className="text-xl sm:text-2xl font-bold text-indigo-300 hover:text-indigo-100 transition-colors cursor-pointer underline"
         >
           {item.label}
         </button>
@@ -80,11 +80,11 @@ function TapLevel({ level, onAnswer, isCorrect }) {
         <button
           key={item.id}
           onClick={() => handleTap(item)}
-          className={`${colorClasses[item.color]} px-6 py-3 rounded-xl font-bold text-white transform transition-all hover:scale-105 active:scale-95`}
+          className={`${colorClasses[item.color]} px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-bold text-white text-sm sm:text-base transform transition-all hover:scale-105 active:scale-95`}
         >
           {item.label}
           {item.tapCount && count > 0 && (
-            <span className="ml-2 text-sm opacity-70">({count}/{item.tapCount})</span>
+            <span className="ml-1 sm:ml-2 text-xs sm:text-sm opacity-70">({count}/{item.tapCount})</span>
           )}
         </button>
       );
@@ -95,11 +95,11 @@ function TapLevel({ level, onAnswer, isCorrect }) {
       <button
         key={item.id}
         onClick={() => handleTap(item)}
-        className="flex flex-col items-center p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all transform hover:scale-110 active:scale-95"
-        style={{ fontSize: item.size || 40 }}
+        className="flex flex-col items-center p-3 sm:p-4 bg-white/10 rounded-xl hover:bg-white/20 transition-all transform hover:scale-110 active:scale-95"
+        style={{ fontSize: Math.min(item.size || 40, 32) }}
       >
-        <span>{item.emoji}</span>
-        <span className="text-sm mt-2 text-white/70">{item.label}</span>
+        <span className="sm:text-[40px]" style={{ fontSize: 'inherit' }}>{item.emoji}</span>
+        <span className="text-xs sm:text-sm mt-1 sm:mt-2 text-white/70">{item.label}</span>
       </button>
     );
   };
@@ -107,10 +107,10 @@ function TapLevel({ level, onAnswer, isCorrect }) {
   return (
     <div className="relative">
       {level.instruction && (
-        <p className="text-center text-white/60 mb-4">{level.instruction}</p>
+        <p className="text-center text-white/60 mb-3 sm:mb-4 text-sm sm:text-base">{level.instruction}</p>
       )}
       
-      <div className="flex flex-wrap gap-4 justify-center items-center">
+      <div className="flex flex-wrap gap-2 sm:gap-4 justify-center items-center">
         {level.items.map(renderItem)}
       </div>
     </div>

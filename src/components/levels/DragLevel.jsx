@@ -102,7 +102,7 @@ function DragLevel({ level, onAnswer, isCorrect }) {
   return (
     <div 
       ref={containerRef}
-      className="relative h-64"
+      className="relative h-48 sm:h-64 touch-none"
       onMouseMove={handleDragMove}
       onMouseUp={handleDragEnd}
       onTouchMove={handleDragMove}
@@ -122,9 +122,9 @@ function DragLevel({ level, onAnswer, isCorrect }) {
         {draggableItem && (
           <div
             className={`
-              text-6xl cursor-grab active:cursor-grabbing select-none
-              transition-transform duration-200
-              ${shrunk ? 'text-2xl' : ''}
+              text-5xl sm:text-6xl cursor-grab active:cursor-grabbing select-none
+              transition-transform duration-200 touch-none
+              ${shrunk ? 'text-xl sm:text-2xl' : ''}
               ${dragging === draggableItem.id ? 'scale-110' : ''}
             `}
             style={itemPositions[draggableItem.id] ? {
@@ -145,7 +145,7 @@ function DragLevel({ level, onAnswer, isCorrect }) {
         {targetItem && (
           <div
             data-target="true"
-            className="text-6xl p-4 bg-white/10 rounded-xl border-2 border-dashed border-white/30"
+            className="text-5xl sm:text-6xl p-3 sm:p-4 bg-white/10 rounded-xl border-2 border-dashed border-white/30"
           >
             {targetItem.emoji}
             <p className="text-sm text-center text-white/70 mt-2">{targetItem.label}</p>

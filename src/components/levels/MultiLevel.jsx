@@ -45,7 +45,7 @@ function MultiLevel({ level, onAnswer, isCorrect }) {
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-3 sm:gap-4">
       {level.subQuestions.map((subQ, index) => {
         const isActive = index === currentQuestion;
         const isAnswered = results[index] !== undefined;
@@ -55,27 +55,27 @@ function MultiLevel({ level, onAnswer, isCorrect }) {
           <div 
             key={index}
             className={`
-              card p-4 transition-all duration-300
+              card p-3 sm:p-4 transition-all duration-300
               ${isActive ? 'border-indigo-400 bg-indigo-500/10' : ''}
               ${isAnswered && isQCorrect ? 'border-green-400 bg-green-500/10' : ''}
               ${isAnswered && !isQCorrect ? 'border-red-400 bg-red-500/10' : ''}
               ${!isActive && !isAnswered ? 'opacity-50' : ''}
             `}
           >
-            <div className="flex items-start gap-3">
+            <div className="flex items-start gap-2 sm:gap-3">
               <div className={`
-                w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0
+                w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center flex-shrink-0 text-sm sm:text-base
                 ${isAnswered && isQCorrect ? 'bg-green-500' : ''}
                 ${isAnswered && !isQCorrect ? 'bg-red-500' : ''}
                 ${!isAnswered ? 'bg-white/20' : ''}
               `}>
-                {isAnswered && isQCorrect && <FaCheck className="text-white" />}
-                {isAnswered && !isQCorrect && <FaTimes className="text-white" />}
+                {isAnswered && isQCorrect && <FaCheck className="text-white text-xs sm:text-base" />}
+                {isAnswered && !isQCorrect && <FaTimes className="text-white text-xs sm:text-base" />}
                 {!isAnswered && <span className="text-white/70">{index + 1}</span>}
               </div>
               
-              <div className="flex-1">
-                <p className="mb-3">{subQ.q}</p>
+              <div className="flex-1 min-w-0">
+                <p className="mb-2 sm:mb-3 text-sm sm:text-base">{subQ.q}</p>
                 
                 {isActive && !isAnswered && (
                   <div className="flex gap-2">
@@ -85,12 +85,12 @@ function MultiLevel({ level, onAnswer, isCorrect }) {
                       onChange={(e) => handleInputChange(index, e.target.value)}
                       onKeyPress={(e) => handleKeyPress(e, index)}
                       placeholder="Ketik jawaban..."
-                      className="flex-1 bg-white/10 border border-white/20 rounded-lg px-3 py-2 text-white focus:outline-none focus:border-indigo-400"
+                      className="flex-1 min-w-0 bg-white/10 border border-white/20 rounded-lg px-2 sm:px-3 py-2 text-white text-sm sm:text-base focus:outline-none focus:border-indigo-400"
                       autoFocus
                     />
                     <button
                       onClick={() => handleSubmit(index)}
-                      className="btn-primary px-4 py-2"
+                      className="btn-primary px-3 sm:px-4 py-2 text-sm sm:text-base"
                       disabled={!inputs[index].trim()}
                     >
                       OK

@@ -7,11 +7,11 @@ function ResultScreen({ result, onNextLevel, onBackToLevels, onRetry }) {
 
   const renderStars = () => {
     return (
-      <div className="flex justify-center gap-3 my-6">
+      <div className="flex justify-center gap-2 sm:gap-3 my-4 sm:my-6">
         {[1, 2, 3].map(i => (
           <FaStar 
             key={i}
-            className={`text-5xl transition-all duration-300 ${
+            className={`text-4xl sm:text-5xl transition-all duration-300 ${
               i <= stars 
                 ? 'text-yellow-400 animate-bounce-slow' 
                 : 'text-white/20'
@@ -51,31 +51,31 @@ function ResultScreen({ result, onNextLevel, onBackToLevels, onRetry }) {
   const message = getMessage();
 
   return (
-    <div className="flex-1 flex flex-col items-center justify-center p-6 text-center">
+    <div className="flex-1 flex flex-col items-center justify-center p-4 sm:p-6 text-center">
       {/* Confetti for perfect score or last level */}
       {(stars === 3 || isLastLevel) && (
         <Confetti
           width={window.innerWidth}
           height={window.innerHeight}
           recycle={false}
-          numberOfPieces={200}
+          numberOfPieces={150}
         />
       )}
 
       {/* Trophy for last level */}
       {isLastLevel && (
-        <div className="mb-6 animate-bounce-slow">
-          <div className="w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl">
-            <FaTrophy className="text-5xl text-white" />
+        <div className="mb-4 sm:mb-6 animate-bounce-slow">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-2xl">
+            <FaTrophy className="text-4xl sm:text-5xl text-white" />
           </div>
         </div>
       )}
 
       {/* Level completed card */}
-      <div className="card p-8 max-w-sm w-full animate-pop">
-        <p className="text-white/60 mb-2">Level {level}</p>
-        <h2 className="text-3xl font-bold mb-2">{message.title}</h2>
-        <p className="text-white/70">{message.subtitle}</p>
+      <div className="card p-5 sm:p-8 max-w-sm w-full mx-4 animate-pop">
+        <p className="text-white/60 mb-2 text-sm sm:text-base">Level {level}</p>
+        <h2 className="text-2xl sm:text-3xl font-bold mb-2">{message.title}</h2>
+        <p className="text-white/70 text-sm sm:text-base">{message.subtitle}</p>
 
         {renderStars()}
 
